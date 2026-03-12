@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bgGradAlt" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#0E1112"/>
+      <stop offset="60%" stop-color="#081011"/>
+      <stop offset="100%" stop-color="#040506"/>
+    </radialGradient>
+    <filter id="cardSoftShadowAlt" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="30" flood-color="#000" flood-opacity="0.45" />
+    </filter>
+    <linearGradient id="glassGradAlt" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.02"/>
+    </linearGradient>
+    <filter id="glowLeftAlt" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="40" result="blur1"/>
+      <feMerge>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="glowRightAlt" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="40" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background alternative (deep) -->
+  <rect width="1080" height="1920" rx="0" fill="url(#bgGradAlt)" />
+
+  <!-- Left magenta ambient glow -->
+  <ellipse cx="160" cy="700" rx="260" ry="260" fill="#FF66D9" opacity="0.12" filter="url(#glowLeftAlt)"/>
+
+  <!-- Right cyan ambient glow -->
+  <ellipse cx="920" cy="700" rx="260" ry="260" fill="#00E5FF" opacity="0.12" filter="url(#glowRightAlt)"/>
+
+  <!-- Top header: category pill (pastel) -->
+  <g transform="translate(0,80)">
+    <rect x="60" y="40" width="220" height="56" rx="28" fill="#7C6BFF" opacity="0.12" />
+    <text x="170" y="80" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial" font-size="20" fill="#E8E6FF">Groeten</text>
+  </g>
+
+  <!-- Central flashcard container (neumorphic + glass) -->
+  <g transform="translate(0,220)">
+    <rect x="130" y="160" width="820" height="510" rx="40" fill="#0B0C0D" filter="url(#cardSoftShadowAlt)"/>
+
+    <!-- glass overlay -->
+    <rect x="150" y="180" width="780" height="470" rx="34" fill="url(#glassGradAlt)" stroke="#FFFFFF" stroke-opacity="0.03"/>
+
+    <!-- Left 'wrong' icon (faint) -->
+    <g transform="translate(210,405)" opacity="0.95">
+      <circle cx="0" cy="0" r="40" fill="#FF66D9" opacity="0.12" />
+      <g transform="translate(-6,-6)" opacity="0.6">
+        <line x1="-18" y1="-18" x2="18" y2="18" stroke="#FF66D9" stroke-width="6" stroke-linecap="round" />
+        <line x1="18" y1="-18" x2="-18" y2="18" stroke="#FF66D9" stroke-width="6" stroke-linecap="round" />
+      </g>
+    </g>
+
+    <!-- Right 'correct' icon (faint) -->
+    <g transform="translate(870,405)" opacity="0.95">
+      <circle cx="0" cy="0" r="40" fill="#00E5FF" opacity="0.12" />
+      <g transform="translate(-6,-4)" opacity="0.8">
+        <polyline points="-18,0 -6,12 18,-12" fill="none" stroke="#00E5FF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+      </g>
+    </g>
+
+    <!-- Main word -->
+    <text x="540" y="380" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial" font-size="72" font-weight="700" fill="#FFFFFF" letter-spacing="0.5">
+      Добро утро!
+    </text>
+
+    <!-- Transliteration -->
+    <text x="540" y="430" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial" font-size="20" fill="#B9C6CD" opacity="0.95">Dobro utro</text>
+
+    <!-- Accent: progress bar in cyan -->
+    <rect x="440" y="470" width="200" height="8" rx="4" fill="#FFFFFF" opacity="0.04" />
+    <rect x="440" y="470" width="136" height="8" rx="4" fill="#00E5FF" />
+
+    <!-- Swipe hint: subtle chevrons colored -->
+    <g opacity="0.08">
+      <polyline points="420,300 440,320 420,340" fill="none" stroke="#FF66D9" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline points="660,300 680,320 660,340" fill="none" stroke="#00E5FF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+
+  <!-- Bottom stats area -->
+  <g transform="translate(0,900)">
+    <rect x="60" y="1100" width="960" height="260" rx="24" fill="#0B0C0D" opacity="0.95" filter="url(#cardSoftShadowAlt)" />
+    <rect x="80" y="1120" width="920" height="220" rx="18" fill="#070808" opacity="0.95" />
+
+    <!-- Left stat: Efficiency -->
+    <g transform="translate(120,1200)">
+      <text x="0" y="-18" font-family="Inter, sans-serif" font-size="14" fill="#7A8B94">Efficiëntie</text>
+      <!-- circular indicator -->
+      <circle cx="46" cy="36" r="36" fill="#060606" stroke="#FFFFFF" stroke-opacity="0.04"/>
+      <path d="M 46 12 A 24 24 0 1 1 45.9 11.99" fill="none" stroke="#00E5FF" stroke-width="8" stroke-linecap="round" transform="rotate(0 46 36)" />
+      <text x="46" y="48" font-family="Inter, sans-serif" font-size="18" fill="#FFFFFF" text-anchor="middle">86%</text>
+    </g>
+
+    <!-- Right stat: Cards count -->
+    <g transform="translate(620,1200)">
+      <text x="0" y="-18" font-family="Inter, sans-serif" font-size="14" fill="#7A8B94">Aantal kaarten</text>
+      <rect x="0" y="6" width="160" height="72" rx="12" fill="#060606" stroke="#FFFFFF" stroke-opacity="0.04"/>
+      <text x="80" y="54" font-family="Inter, sans-serif" font-size="34" fill="#FFFFFF" text-anchor="middle">24</text>
+    </g>
+
+    <!-- Small decorative cyan accent -->
+    <rect x="520" y="1196" width="8" height="120" rx="4" fill="#00E5FF" opacity="0.95" />
+  </g>
+
+  <!-- Footer: subtle branding -->
+  <g transform="translate(0,1770)">
+    <text x="540" y="32" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial" font-size="14" fill="#8B8F93">Glavo — slim leren, snelle progressie</text>
+  </g>
+</svg>

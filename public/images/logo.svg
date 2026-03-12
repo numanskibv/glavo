@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 40" fill="none">
+  <!-- G mark -->
+  <rect width="36" height="36" x="2" y="2" rx="8" fill="#FFD400"/>
+  <text x="19" y="27" font-family="Geist, ui-sans-serif, system-ui, sans-serif" font-size="22" font-weight="700" fill="#000" text-anchor="middle">G</text>
+  <!-- wordmark -->
+  <text x="48" y="27" font-family="Geist, ui-sans-serif, system-ui, sans-serif" font-size="22" font-weight="700" fill="#F3F4F6" letter-spacing="-0.5">lavo</text>
+</svg>
