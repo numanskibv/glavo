@@ -1,11 +1,20 @@
 # ── Stage 1: JS/CSS assets ──────────────────────────────────────────────────
-FROM node:22-alpine AS assets
+FROM node:20-alpine AS assets
 
 WORKDIR /app
-COPY package*.json ./
-RUN npm ci
 
-COPY . .
+# Installeer dependencies
+COPY package.json package-lock.json ./
+RUN npm ci --prefer-offline
+
+# Kopieer alleen bestanden die Vite nodig heeft
+COPY vite.config.js ./
+COPY resources ./resources
+COPY public ./public
+
+# Minimal .env zodat Vite VITE_APP_NAME kan lezen
+RUN echo "VITE_APP_NAME=Glavo" > .env
+
 RUN npm run build
 
 # ── Stage 2: PHP dependencies ────────────────────────────────────────────────
