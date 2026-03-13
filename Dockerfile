@@ -43,6 +43,9 @@ RUN apk add --no-cache \
     oniguruma-dev \
     postgresql-dev \
     supervisor \
+    autoconf \
+    g++ \
+    make \
     && docker-php-ext-install \
     bcmath \
     gd \
@@ -53,6 +56,7 @@ RUN apk add --no-cache \
     zip \
     && pecl install redis \
     && docker-php-ext-enable redis \
+    && apk del autoconf g++ make \
     && rm -rf /var/cache/apk/* /tmp/pear
 
 COPY docker/php/php.ini /usr/local/etc/php/conf.d/app.ini
