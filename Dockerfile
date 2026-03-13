@@ -13,7 +13,7 @@ COPY resources ./resources
 COPY public ./public
 
 # Minimal .env zodat Vite VITE_APP_NAME kan lezen
-RUN echo "VITE_APP_NAME=Glavo" > .env
+RUN echo "VITE_APP_NAME=Glavo" > .env-production
 
 RUN npm run build
 
@@ -65,6 +65,7 @@ COPY --from=assets /app/public/build ./public/build
 COPY . .
 
 # Set permissions
+
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html/storage \
     && chmod -R 755 /var/www/html/bootstrap/cache
