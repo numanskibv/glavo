@@ -67,6 +67,9 @@ COPY . .
 COPY --from=vendor /app/vendor ./vendor
 COPY --from=assets /app/public/build ./public/build
 
+# Bewaar built assets buiten de workdir zodat ze niet worden overschreven door het volume
+COPY --from=assets /app/public/build /app-assets
+
 RUN mkdir -p bootstrap/cache storage/logs storage/framework/cache storage/framework/sessions storage/framework/views storage/framework/testing \
     && chown -R www-data:www-data /var/www/html \
     && chmod -R 755 storage bootstrap/cache

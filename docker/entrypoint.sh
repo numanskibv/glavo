@@ -16,5 +16,9 @@ php artisan migrate --force
 # Storage symlink aanmaken als die nog niet bestaat
 php artisan storage:link 2>/dev/null || true
 
+# Kopieer gebouwde assets naar het gedeelde volume (voor nginx)
+echo "Assets kopiëren naar gedeeld volume..."
+cp -r /app-assets/. /var/www/html/public/build/
+
 echo "App gestart."
 exec "$@"

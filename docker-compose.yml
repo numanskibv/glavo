@@ -9,6 +9,7 @@ services:
     volumes:
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
       - ./public:/var/www/html/public:ro
+      - public_build:/var/www/html/public/build:ro
       - storage_data:/var/www/html/storage:ro
     depends_on:
       - app
@@ -27,6 +28,7 @@ services:
     volumes:
       - storage_data:/var/www/html/storage
       - ./bootstrap/cache:/var/www/html/bootstrap/cache
+      - public_build:/var/www/html/public/build
     depends_on:
       db:
         condition: service_healthy
@@ -102,6 +104,7 @@ volumes:
   db_data:
   redis_data:
   storage_data:
+  public_build:
 
 networks:
   glavo:
