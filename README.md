@@ -1,6 +1,6 @@
 # Glavo
 
-Glavo is een flashcard-gebaseerde taalleerapplicatie voor het leren van O.A. Bulgaars. Studenten oefenen woordenschat via een swipe-game, terwijl docenten cursussen en lessen beheren.
+Glavo is een flashcard-gebaseerde taalleerapplicatie voor het leren van O.A. Bulgaars. Studenten oefenen woordenschat via een swipe-game, terwijl docenten cursussen en lessen beheren-m " Glavo Vers"
 
 ---
 
@@ -64,7 +64,7 @@ User  (rol: student / teacher / admin · xp · streak)
 
 ```bash
 # 1. Kloon de repository
-git clone <repo-url> glavo
+git clone git@github.com:numanskibv/glavo.git glavo
 cd glavo
 
 # 2. Installeer PHP-afhankelijkheden
