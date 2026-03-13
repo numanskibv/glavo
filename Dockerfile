@@ -51,7 +51,9 @@ RUN apk add --no-cache \
     pdo_mysql \
     pdo_pgsql \
     zip \
-    && rm -rf /var/cache/apk/*
+    && pecl install redis \
+    && docker-php-ext-enable redis \
+    && rm -rf /var/cache/apk/* /tmp/pear
 
 COPY docker/php/php.ini /usr/local/etc/php/conf.d/app.ini
 
