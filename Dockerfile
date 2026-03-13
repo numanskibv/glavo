@@ -1,23 +1,4 @@
-# ── Stage 1: JS/CSS assets ──────────────────────────────────────────────────
-FROM node:20-alpine AS assets
-
-WORKDIR /app
-
-# Installeer dependencies
-COPY package.json package-lock.json ./
-RUN npm ci --prefer-offline
-
-# Kopieer alleen bestanden die Vite nodig heeft
-COPY vite.config.js ./
-COPY resources ./resources
-COPY public ./public
-
-# Minimal .env zodat Vite VITE_APP_NAME kan lezen
-RUN echo "VITE_APP_NAME=Glavo" > .env-production
-
-RUN npm run build
-
-# ── Stage 2: PHP dependencies ────────────────────────────────────────────────
+# ── Stage 1: PHP dependencies ────────────────────────────────────────────────
 FROM composer:2 AS vendor
 
 WORKDIR /app
@@ -31,6 +12,26 @@ RUN composer install \
 
 COPY . .
 RUN composer dump-autoload --optimize --no-dev
+
+# ── Stage 2: JS/CSS assets ──────────────────────────────────────────────────
+FROM node:20-alpine AS assets
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN npm ci --prefer-offline
+
+COPY vite.config.js ./
+COPY resources ./resources
+COPY public ./public
+
+# Flux CSS zit in vendor — kopieer alleen wat Vite nodig heeft
+COPY --from=vendor /app/vendor ./vendor
+
+# Minimale .env zodat Vite VITE_APP_NAME kan lezen
+RUN echo "VITE_APP_NAME=Glavo" > .env
+
+RUN npm run build
 
 # ── Stage 3: Production image ────────────────────────────────────────────────
 FROM php:8.2-fpm-alpine
